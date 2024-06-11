@@ -59,6 +59,15 @@ const resolvers = {
             _db.games.push(game)
 
             return game
+        },
+        updateGame(_,args){
+            _db.games = _db.games((g) =>{
+                if (g.id === args.id){
+                    return {...g, ...args.edits}
+                }
+
+                return g
+            })
         }
     }
 }
